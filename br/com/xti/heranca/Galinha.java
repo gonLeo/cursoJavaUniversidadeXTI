@@ -1,6 +1,7 @@
 package br.com.xti.heranca;
 
-public class Galinha extends Animal {
+//Interface permite relacionementos de típos díspares
+public class Galinha extends Animal implements AreaCalculavel{
     public Galinha() {
         // Faz referencia a superclasse (Para diferenciar os atributos da classe pai e
         // filho)
@@ -10,5 +11,9 @@ public class Galinha extends Animal {
     // Sobreescria do método da classe animal
     public void fazerBarulho() {
         System.out.println("Có Có");
+    }
+
+    public double calcularArea() {
+        return 0;
     }
 }
