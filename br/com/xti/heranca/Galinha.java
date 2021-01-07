@@ -6,4 +6,9 @@ public class Galinha extends Animal {
         // filho)
         super(2, "Milho");
     }
+
+    // Sobreescria do método da classe animal
+    public void fazerBarulho() {
+        System.out.println("Có Có");
+    }
 }

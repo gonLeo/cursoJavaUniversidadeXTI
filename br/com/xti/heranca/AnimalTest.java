@@ -4,13 +4,13 @@ public class AnimalTest {
 
     public static void main(String[] args) {
         Cachorro bob = new Cachorro();
-        bob.dormir();
-
         Galinha carijo = new Galinha();
-        carijo.dormir();
+        Animal generico = new Animal(0, null);
 
-        System.out.println(bob instanceof Cachorro);
-        System.out.println(bob instanceof Animal);
+        generico.fazerBarulho();
+        carijo.fazerBarulho();
+        bob.fazerBarulho();
+
     }
 
 }
