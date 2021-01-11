@@ -4,27 +4,31 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DividePorZero {
+
+    public static void dividir(Scanner s) throws InputMismatchException, ArithmeticException {
+        System.out.print("Números: ");
+        int a = s.nextInt();
+        System.out.print("Divisor: ");
+        int b = s.nextInt();
+
+        System.out.println(a / b);
+        s.close();
+    }
+
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         boolean continuar = true;
         do {
             try {
-                System.out.print("Números: ");
-                int a = s.nextInt();
-                System.out.print("Divisor: ");
-                int b = s.nextInt();
-    
-                System.out.println(a/b);
+                dividir(s);
                 continuar = false;
-                s.close();
-            } catch (InputMismatchException e1) {
-                System.err.println("Valor de entrada inválido");
-                s.nextLine();                
-            }catch (ArithmeticException e2) {
-                System.err.println("Não é possível dividir por zero");
-                s.nextLine();                
-            }            
-        } while (continuar);               
-      
+                // Multi catch
+            } catch (InputMismatchException | ArithmeticException e1) {
+                System.err.println("Valor inválido");
+                e1.printStackTrace(); // Imprime a pilha de erro encontrada na exceção
+                s.nextLine();
+            }
+        } while (continuar);
+
     }
 }
