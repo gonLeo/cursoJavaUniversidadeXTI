@@ -1,6 +1,9 @@
 package br.com.xti.poo;
 
+import java.time.LocalDate;
+
 public class Conta {
+
 	private String cliente;
 	private double saldo;
 
@@ -20,26 +23,32 @@ public class Conta {
 	}
 
 	public void exibeSaldo() {
-		System.out.println(cliente + " seu saldo � R$" + saldo);
+		System.out.println("\nCliente: " + cliente + "\nSaldo Disponível: R$" + saldo);
 	}
 
 	public boolean saca(double valor) {
 
-		if (valor >= saldo) {
-			saldo = saldo + valor;
+		if (valor <= saldo) {
+			saldo = saldo - valor;
 			return true;
-		} else {
-			return false;
 		}
+		return false;
 
 	}
 
 	public String deposita(double valor) {
 		saldo = saldo + valor;
-		return "Saque realizado com sucesso";
+		return "Depósito realizado com sucesso";
 	}
 
-	public void recebe(double valor, Conta conta) {
-		conta.deposita(valor);
+	public String transfere(double valor, Conta contaDestino) {
+		contaDestino.deposita(valor);
+		String res = "-----------------------------------------------"
+				+ "\nCOMPROVANTE DE TRANSFERÊNCIA ENTRE CONTAS\n\n" + "CONTA DE ORIGEM: " + this.cliente
+				+ "\nSALDO APÓS TRANSFERÊNCIA R$ " + this.saldo + "\n-----------------------------------------------"
+				+ "\n\nCONTA DESTINO: " + contaDestino.cliente + "\nSALDO APOS TRANSFERENCIA R$ " + contaDestino.saldo
+				+ "\n\nREALIZADA EM: " + java.time.LocalDate.now()
+				+ "\n-----------------------------------------------";
+		return res;
 	}
 }

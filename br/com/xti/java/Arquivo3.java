@@ -19,6 +19,17 @@ public class Arquivo3 {
         contas.add(new Conta("Keanu Reeves", 7500.50));
         contas.add(new Conta("Michael Jackson", 10000.50));
         salvaContas(contas);
+
+        if (contas.get(0).saca(1000)) {
+            String res = contas.get(0).transfere(1000, contas.get(1));
+            System.out.println(res.toString());
+        } else {
+            System.out.println("Erro na transferencia");
+        }
+        ;
+        // contas.get(0).exibeSaldo();
+        // contas.get(1).exibeSaldo();
+
     }
 
     public static void salvaContas(ArrayList<Conta> conta) {
@@ -28,7 +39,7 @@ public class Arquivo3 {
         try (BufferedWriter w = Files.newBufferedWriter(path, utf8)) {
             for (int i = 0; i < conta.size(); i++) {
                 w.write(conta.get(i).showDetails() + "\n");
-                conta.get(i).exibeSaldo();
+                // conta.get(i).exibeSaldo();
             }
         } catch (IOException e) {
             e.printStackTrace();
